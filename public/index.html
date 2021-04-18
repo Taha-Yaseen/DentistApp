@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+[ <!ATTLIST tag pid CDATA #IMPLIED>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dentist System</title>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="stylesheets/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="animate.css">
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="stylesheets/addons/datatables.min.css" rel="stylesheet">
+    <!--Print.js CSS-->
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.min.css">
+
+
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #232F34;">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="index.html">
+            <img src="images/dicon.png" height="50" alt="mdb logo">
+        </a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler colBtn" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon "></span>
+</button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Patients
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="teeth.html">Teeth</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="payments.html">Payments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="extras.html">Cases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="doctor.html">Doctors</a>
+                </li>
+
+
+                <!-- Dropdown -->
+
+
+            </ul>
+            <!-- Links -->
+
+            <form class="form-inline">
+                <div class=" my-0">
+                    <input class="form-control mr-sm-2" id="search" type="text" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+    <!--PRint Modal-->
+    <div class="modal fade" id="reciptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="modal-content" id="t-form">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Reciept</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body mx-3" id="modal-body">
+
+
+
+                    <div id="recip">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 ml-2 text-center">Date: <span id="rec-date">XX-XX-XXXX</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 ml-2 text-center">Name: <span id="rec-name">XX-XX-XXXX</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 ml-2 text-center">Phone Number: <span id="rec-phone">XX-XX-XXXX</span></div>
+                            </div>
+
+                        </div>
+                        <div class="container">
+                            <table class="col-md-12">
+                                <thead id="rth">
+                                    <th>
+                                        Tooth number
+                                    </th>
+                                    <th>
+                                        Case
+                                    </th>
+                                    <th>
+                                        Cost
+                                    </th>
+                                    <th>
+                                        Value
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                </thead>
+                                <tbody id="rtb">
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="ttext">Total Payments</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td id="totalP" class="ttext">$180</td>
+                                        <td></td>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <p id="footerD"> توقيع الدكتور</p>
+                        <p id="footerP"> توقيع المريض</p>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center" id="print">
+                    <button type="bu" id="print" class="btn btn-unique">Print <i class="fas fa-paper-plane-o ml-1"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Payment Modal-->
+    <div class="modal fade" id="modalPaymentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="modal-content" id="t-form">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Payment Info</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+                </div>
+                <div class="modal-body mx-3">
+                    <datalist id="p-list"></datalist>
+                    <h3 class="pName heading">
+                    </h3>
+                    </br>
+                    <label>Teeth Chart</label>
+                    <div class="d-flex justify-content-center my-4">
+                        </br>
+                        <img class="image-fluid" src="images/toothChart.gif">
+                    </div>
+                    <div class=" mb-5">
+                        <label data-success="right">Tooth Number</label>
+                        <select name="toothP" id="toothP" class="custom-select custom-select-sm form-control toothNum" required>
+                            
+                          </select>
+                    </div>
+
+                    <div class="  mb-5">
+                        <label data-success="right">Status</label>
+                        <select id="statusP" disabled class="custom-select custom-select-sm form-control status" required>
+                        </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="row">
+                            <div class="col-md-4" id="costVal">
+                                cost:
+                            </div>
+                            <div class="col-md-4" id="remVal">
+                                remaining:
+                            </div>
+                            <div class="col-md-4" id="paidVal">
+                                paid:
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-5">
+                        <label data-success="right">Value</label>
+                        <input type="number" disabled id="value" name="value" class="form-control">
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" id="paymentSubmit" pid="" class="btn btn-unique">Add <i class="fas fa-paper-plane-o ml-1"></i></button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Tooth Modal-->
+    <div class="modal fade" id="modalTeethForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <form class="modal-content" id="p-form">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Tooth Info</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+                </div>
+                <div class="modal-body mx-3">
+                    <datalist id="p-list"></datalist>
+                    <h3 class="pName heading">
+
+                    </h3>
+                    </br>
+
+
+                    <label>Teeth Chart</label>
+                    <div class="d-flex justify-content-center my-4">
+                        </br>
+                        <img class="image-fluid" src="images/toothChart.gif">
+                    </div>
+
+                    <div class="mb-5">
+                        <label data-success="right">Tooth Number</label>
+                        <select name="toothT" id="toothT" class="custom-select custom-select-sm form-control toothNum" required multiple>
+                            
+                          </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label data-success="right">Status</label>
+                        <select id="statusT" class="custom-select custom-select-sm form-control status" required multiple>
+                        </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label data-success="right">Cost</label>
+                        <input type="number" id="cost" name="cost" class="form-control ">
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" id="teethSubmit" class="btn btn-unique">Add <i class="fas fa-paper-plane-o ml-1"></i></button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Patient Modal-->
+    <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <form class="modal-content" id="p-form" method="POST" action="/post-info">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Patient Info</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class=" mb-5 ">
+                        <label data-error="wrong" data-success="right" autocomplete="off" for="name">Patient name</label>
+                        <input type="text" id="name" name="name" class="  form-control" required>
+
+                    </div>
+
+
+
+                    <div class=" mb-5">
+                        <label data-error="wrong" data-success="right" for="age">Patient age</label>
+                        <input type="text" id="age" name="age" class="form-control" g>
+                    </div>
+
+                    <div class=" mb-5">
+                        <label data-error="wrong" data-success="right" for="phone">Phone Number</label>
+                        <input type="number" id="phone" name="phone" class="form-control validate">
+                    </div>
+
+
+
+                    <!--<label data-error="wrong" data-success="right" for="rating">Rating</label>
+
+                    <div class="d-flex justify-content-center my-4">
+
+                        <span class="font-weight-bold blue-text mr-2 mt-1">1</span>
+
+                        <input class="border-0" id="rating" name="rating" type="range" min="1" max="5" />
+
+                        <span class="font-weight-bold blue-text ml-2 mt-1">5</span>
+                    </div>
+                -->
+                    <div class="mb-5 ">
+                        <label>Doctor</label>
+                        <br>
+
+                        <select id="dr" class=" custom-select" multiple aria-placeholder="Select Doctor">
+                        </select>
+                    </div>
+                    <div>
+                        <label data-error="wrong" data-success="right" for="note">Note</label>
+                        <textarea type="text" id="note" name="note" class="md-textarea form-control" rows="4"></textarea>
+                    </div>
+
+                </div>
+                <div id="submit-footer" class="modal-footer d-flex justify-content-center">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Remove Modal -->
+    <div class="modal fade" id="ConfrmRemoveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+        <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Remove</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+                </div>
+                <div class="modal-body">
+                    Do you want to remove this?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-orange " data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="conf-remove" data-dismiss="modal">Yes Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--OKAY modal-->
+    <div class="modal fade" id="modalDone" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+        <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Done Successfully</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success " data-dismiss="modal">Okay</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="btnBack" class="text-center  pt-3">
+        <a class="btn  btn-rounded mb-4" id='add' data-toggle="modal" data-target="#modalContactForm">اضافة مريض/Add Patient</a>
+    </div>
+
+    <div id="table" class="table-editable">
+
+        <table class="table text-center" id="p-list">
+            <thead class="white-text" id="pth">
+                <tr>
+                    <th class="text-center col-md-2">Person Name</th>
+                    <th class="text-center col-md-2">Phone Number</th>
+                    <th class="text-center col-md-2">Tooth</th>
+                    <th class="text-center col-md-2">Payments</th>
+                    <th class="text-center col-md-2">Profile</th>
+                    <th class="text-center col-md-2">Reciept</th>
+                    <th class="text-center col-md-2">Remove</th>
+                </tr>
+            </thead>
+            <tbody id="p-tb">
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="javascripts/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="javascripts/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript" src="javascripts/patients.js"></script>
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="javascripts/addons/datatables.min.js"></script>
+    <!--Print.js Script-->
+    <script type="text/javascript" src="javascripts/print.min.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>

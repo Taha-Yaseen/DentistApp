@@ -1,0 +1,39 @@
+* {
+    font-size: 20px;
+    font-family: "Futura";
+}
+
+#add,
+#save {
+    background-color: #6200EE;
+    color: #ffffff;
+}
+
+#pth {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #344955;
+}
+
+#btnBack {
+    background-color: #344955;
+}
+
+#toothChart {
+    position: fixed;
+    border: #232F34;
+    display: none;
+}
+
+#printBtn {
+    position: fixed;
+    right: 10px;
+}
+
+nav {
+    background-color: #232F34;
+}
+
+@font-face {
+    font-family: "Futura";
+    src: url(/font/futura-medium-bt.ttf) format("truetype");
+}
