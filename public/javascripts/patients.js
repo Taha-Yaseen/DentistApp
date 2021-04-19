@@ -398,7 +398,7 @@ $(document).ready(function() {
 
 
     let getList = () =>
-        $.get(url + "/view-info", data => {
+        $.get("localhost:2777/view-info", data => {
             $('#p-tb').html('')
             $(data).each(function(index, element) {
 
