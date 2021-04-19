@@ -1,18 +1,18 @@
-var express = require('express')
-var path = require('path')
+let express = require('express')
+let path = require('path')
+let env = require('dotenv').config()
 
+let port = 2777
 
-var port = 2777
-
-var app = express()
+let app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-var mongodb = require('mongodb')
+let mongodb = require('mongodb')
 
-var MongoClient = require('mongodb').MongoClient
+let MongoClient = require('mongodb').MongoClient
 
 //connect
 MongoClient.connect("mongodb+srv://dentist:X8OJlYfljNhhZ0wz@dentistdb.rvaq8.mongodb.net/DentistDB?retryWrites=true&w=majority", {
@@ -20,7 +20,7 @@ MongoClient.connect("mongodb+srv://dentist:X8OJlYfljNhhZ0wz@dentistdb.rvaq8.mong
     useUnifiedTopology: true
 }, function(err, db) {
     if (err) throw err
-    var dbo = db.db("DentistDB")
+    let dbo = db.db("DentistDB")
         // view all records
     app.get('/view-info', function(req, res) {
 

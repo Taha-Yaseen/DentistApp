@@ -151,7 +151,7 @@ $(document).ready(function() {
         $("#statusP").prop('disabled', true)
         $("#value").prop('disabled', true)
 
-        $.get("http://https://dentistapp-7007.herokuapp.com/view-info", data => {
+        $.get("${process.env.URL}/view-info", data => {
             $(data).each(function(index, element) {
                 if (element['_id'] == id) {
                     let arr = []
