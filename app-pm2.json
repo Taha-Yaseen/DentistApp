@@ -1,6 +1,8 @@
 {
-  "script": "app.js",
+  "script": "app",
   "name": "app",
+  "filter_env": [],
+  "namespace": "default",
   "env": {},
   "merge_logs": true,
   "vizion": true,
@@ -10,7 +12,7 @@
   "pmx": true,
   "automation": true,
   "treekill": true,
-  "username": "taha",
+  "username": "Taha",
   "windowsHide": true,
   "kill_retry_time": 100,
   "write": true
