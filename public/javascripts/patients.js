@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    let url = "https://dentistapp-7007.herokuapp.com"
     for (let i = 1; i < 5; i++)
         for (let j = 1; j < 9; j++)
             $('#toothT').append('<option value="' + i + j + '">' + i + j + '</option>')
@@ -7,7 +8,7 @@ $(document).ready(function() {
 
 
     let getStat = () =>
-        $.get("http://localhost:2777/view-stat", data => {
+        $.get(url + "/view-stat", data => {
             $('#statusT').html('')
             $(data).each(function(index, element) {
                 $('#statusT').append('<option value="' + element.name + '">' + element.name + '</option>')
@@ -16,7 +17,7 @@ $(document).ready(function() {
 
     getStat()
     let getDr = () =>
-        $.get("http://localhost:2777/view-dr", data => {
+        $.get(url + "/view-dr", data => {
             $('#dr').html('')
             $(data).each(function(index, element) {
                 $('#dr').append('<option value="' + element.name + '">' + element.name + '</option>')
@@ -105,7 +106,7 @@ $(document).ready(function() {
 
         const id = $target.attr('id')
 
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $(data).each(function(index, element) {
                 if (element['_id'] == id) {
                     $(".pName").html("Patient Name:  " + element.name)
@@ -124,7 +125,7 @@ $(document).ready(function() {
         $('#teethSubmit').click(function() {
             let tooth = new Teeth(id, $("#toothT").val().toString(), $("#statusT").val().toString(), $("#cost").val())
             if (allTrue(tooth)) {
-                $.post('http://localhost:2777/post-tooth', tooth).then(() => {
+                $.post('http://localhost:${port}/post-tooth', tooth).then(() => {
                     $('#modalTeethForm').modal('toggle')
                     $('#modalDone').modal('toggle')
                     getList()
@@ -151,7 +152,7 @@ $(document).ready(function() {
         $("#statusP").prop('disabled', true)
         $("#value").prop('disabled', true)
 
-        $.get("${process.env.URL}/view-info", data => {
+        $.get("/view-info", data => {
             $(data).each(function(index, element) {
                 if (element['_id'] == id) {
                     let arr = []
@@ -201,7 +202,7 @@ $(document).ready(function() {
 
 
 
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $('#rtb').html('')
             let today = new Date()
             let time = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
@@ -284,7 +285,7 @@ $(document).ready(function() {
 
 
 
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
 
 
             $(data).each(function(index, element) {
@@ -318,7 +319,7 @@ $(document).ready(function() {
                 note: $("#note").val(),
             }
 
-            $.post("http://localhost:2777/post-edit", person)
+            $.post(url + "/post-edit", person)
             $('#modalContactForm').modal('hide')
 
             getList()
@@ -384,7 +385,7 @@ $(document).ready(function() {
 
             let person = new Patients($("#name").val(), $("#phone").val(), $("#age").val(), $("#rating").val(), $('#dr').val().toString(), $('#note').val())
             if (person.name.length > 0)
-                $.post("http://localhost:2777/post-info", person).then(() => {
+                $.post(url + "/post-info", person).then(() => {
                     $('modalContactForm').modal('hide')
                     AddOne(person)
                 })
@@ -397,7 +398,7 @@ $(document).ready(function() {
 
 
     let getList = () =>
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $('#p-tb').html('')
             $(data).each(function(index, element) {
 
