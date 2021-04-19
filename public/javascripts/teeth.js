@@ -1,11 +1,11 @@
-$(document).ready(function() {
-
+$(document).$(function() {
+    let url = "https://dentistapp-7007.herokuapp.com"
     for (let i = 1; i < 5; i++)
         for (let j = 1; j < 9; j++)
             $('#number').append('<option value="' + i + j + '">' + i + j + '</option>')
 
     let getStat = () =>
-        $.get("http://localhost:2777/view-stat", data => {
+        $.get(url + "/view-stat", data => {
             $('#status').html('')
             $(data).each(function(index, element) {
                 $('#status').append('<option value="' + element.name + '">' + element.name + '</option>')
@@ -24,7 +24,7 @@ $(document).ready(function() {
         const ids = $target.attr('id')
 
         let value
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $(data).each(function(index, element) {
                 $(element.teeth).each(function(index, elementT) {
                     if (elementT._id == ids) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 id: ids,
                 val: value
             }
-            $.post("http://localhost:2777/deleteTeeth", Tinfo)
+            $.post(url + "/deleteTeeth", Tinfo)
             $('#ConfrmRemoveModal').modal('hide')
             $($target).parents('tr').toggle(200, () => {
                 $($target).parents('tr').detach()
@@ -54,7 +54,7 @@ $(document).ready(function() {
         $target = $(e.target)
         const id = $target.attr('id')
         $('#modalTeethForm').modal('show')
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $(data).each(function(index, element) {
                 $(element.teeth).each(function(index, elementT) {
                     if (elementT._id == id) {
@@ -74,7 +74,7 @@ $(document).ready(function() {
 
 
 
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $(data).each(function(index, element) {
                 $(element.teeth).each(function(index, elementT) {
                     if (elementT._id == id) {
@@ -103,7 +103,7 @@ $(document).ready(function() {
                 cost: $("#cost").val(),
             }
 
-            $.post("http://localhost:2777/teeth-edit", tooth)
+            $.post(url + "/teeth-edit", tooth)
             $('#modalTeethForm').modal('hide')
 
             get()
@@ -141,7 +141,7 @@ $(document).ready(function() {
         $('#toothChart').toggle(200)
     })
 
-    let get = () => $.get("http://localhost:2777/view-info", data => {
+    let get = () => $.get(url + "/view-info", data => {
         $('#p-tb').html('')
         $(data).each(function(index, element) {
             $(element.teeth).each(function(index, elementT) {

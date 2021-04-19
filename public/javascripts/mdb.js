@@ -343,15 +343,15 @@
                     if ((f || k in x) && (y = w(m = x[k], k, b), t))
                         if (e) M[k] = y;
                         else if (y) switch (t) {
-                    case 3:
-                        return !0;
-                    case 5:
-                        return m;
-                    case 6:
-                        return k;
-                    case 2:
-                        l.call(M, m)
-                } else if (c) return !1;
+                        case 3:
+                            return !0;
+                        case 5:
+                            return m;
+                        case 6:
+                            return k;
+                        case 2:
+                            l.call(M, m)
+                    } else if (c) return !1;
                 return d ? -1 : u || c ? c : M
             }
         };
@@ -1788,7 +1788,8 @@
                 } else {
                     if (f >= 9007199254740991) throw TypeError("Maximum allowed index exceeded");
                     u(d, f++, o)
-                } return d.length = f, d
+                }
+            return d.length = f, d
         }
     })
 }, function(t, e, n) {
@@ -2056,7 +2057,8 @@
                         if ("" !== e || 0 === t || 0 !== f[t]) {
                             var n = String(f[t]);
                             e = "" === e ? n : e + a.call("0", 7 - n.length) + n
-                        } return e
+                        }
+                    return e
                 };
             if (d < 0 || d > 20) throw RangeError("Incorrect fraction digits");
             if (l != l) return "NaN";
@@ -3409,24 +3411,36 @@
                             u = s + l;
                         switch (u > 1 && (s /= u, l /= u), i = 6 * a - (e = Math.floor(6 * a)), 0 != (1 & e) && (i = 1 - i), o = s + i * ((n = 1 - l) - s), e) {
                             default:
-                            case 6:
-                            case 0:
-                                r = n, g = o, b = s;
-                                break;
+                                case 6:
+                                case 0:
+                                r = n,
+                            g = o,
+                            b = s;
+                            break;
                             case 1:
-                                r = o, g = n, b = s;
+                                    r = o,
+                                g = n,
+                                b = s;
                                 break;
                             case 2:
-                                r = s, g = n, b = o;
+                                    r = s,
+                                g = n,
+                                b = o;
                                 break;
                             case 3:
-                                r = s, g = o, b = n;
+                                    r = s,
+                                g = o,
+                                b = n;
                                 break;
                             case 4:
-                                r = o, g = s, b = n;
+                                    r = o,
+                                g = s,
+                                b = n;
                                 break;
                             case 5:
-                                r = n, g = s, b = o
+                                    r = n,
+                                g = s,
+                                b = o
                         }
                         return [255 * r, 255 * g, 255 * b]
                     }
@@ -4661,7 +4675,8 @@
                                         if (i = a.data.datasets[r], "line" === (o = a.getDatasetMeta(r)).type && o.yAxisID === l.id && a.isDatasetVisible(r)) {
                                             var d = Number(l.getRightValue(i.data[e]));
                                             d < 0 ? c += d || 0 : u += d || 0
-                                        } var f = Number(l.getRightValue(t));
+                                        }
+                                    var f = Number(l.getRightValue(t));
                                     return f < 0 ? l.getPixelForValue(c + f) : l.getPixelForValue(u + f)
                                 }
                                 return l.getPixelForValue(t)
@@ -5829,7 +5844,8 @@
                                         var h = i.model.x - r.model.x;
                                         r.deltaK = 0 !== h ? (i.model.y - r.model.y) / h : 0
                                     }!n || n.model.skip ? r.mK = r.deltaK : !i || i.model.skip ? r.mK = n.deltaK : this.sign(n.deltaK) !== this.sign(r.deltaK) ? r.mK = 0 : r.mK = (n.deltaK + r.deltaK) / 2
-                                } for (e = 0; e < f - 1; ++e) r = d[e], i = d[e + 1], r.model.skip || i.model.skip || (o.almostEquals(r.deltaK, 0, this.EPSILON) ? r.mK = i.mK = 0 : (a = r.mK / r.deltaK, s = i.mK / r.deltaK, (u = Math.pow(a, 2) + Math.pow(s, 2)) <= 9 || (l = 3 / Math.sqrt(u), r.mK = a * l * r.deltaK, i.mK = s * l * r.deltaK)));
+                                }
+                            for (e = 0; e < f - 1; ++e) r = d[e], i = d[e + 1], r.model.skip || i.model.skip || (o.almostEquals(r.deltaK, 0, this.EPSILON) ? r.mK = i.mK = 0 : (a = r.mK / r.deltaK, s = i.mK / r.deltaK, (u = Math.pow(a, 2) + Math.pow(s, 2)) <= 9 || (l = 3 / Math.sqrt(u), r.mK = a * l * r.deltaK, i.mK = s * l * r.deltaK)));
                             for (e = 0; e < f; ++e)(r = d[e]).model.skip || (n = e > 0 ? d[e - 1] : null, i = e < f - 1 ? d[e + 1] : null, n && !n.model.skip && (c = (r.model.x - n.model.x) / 3, r.model.controlPointPreviousX = r.model.x - c, r.model.controlPointPreviousY = r.model.y - c * r.mK), i && !i.model.skip && (c = (i.model.x - r.model.x) / 3, r.model.controlPointNextX = r.model.x + c, r.model.controlPointNextY = r.model.y + c * r.mK))
                         }, o.nextItem = function(t, e, n) {
                             return n ? e >= t.length - 1 ? t[0] : t[e + 1] : e >= t.length - 1 ? t[t.length - 1] : t[e + 1]
@@ -7502,39 +7518,68 @@
                             if (a = a || 0, !e || "object" !== o(e) || "[object HTMLImageElement]" !== (s = e.toString()) && "[object HTMLCanvasElement]" !== s) {
                                 if (!(isNaN(n) || n <= 0)) {
                                     switch (t.save(), t.translate(r, i), t.rotate(a * Math.PI / 180), t.beginPath(), e) {
-                                        default:
-                                            t.arc(0, 0, n, 0, 2 * Math.PI), t.closePath();
-                                            break;
+                                        default: t.arc(0, 0, n, 0, 2 * Math.PI),
+                                        t.closePath();
+                                        break;
                                         case "triangle":
-                                            d = (l = 3 * n / Math.sqrt(3)) * Math.sqrt(3) / 2, t.moveTo(-l / 2, d / 3), t.lineTo(l / 2, d / 3), t.lineTo(0, -2 * d / 3), t.closePath();
+                                                d = (l = 3 * n / Math.sqrt(3)) * Math.sqrt(3) / 2,
+                                            t.moveTo(-l / 2, d / 3),
+                                            t.lineTo(l / 2, d / 3),
+                                            t.lineTo(0, -2 * d / 3),
+                                            t.closePath();
                                             break;
                                         case "rect":
-                                            f = 1 / Math.SQRT2 * n, t.rect(-f, -f, 2 * f, 2 * f);
+                                                f = 1 / Math.SQRT2 * n,
+                                            t.rect(-f, -f, 2 * f, 2 * f);
                                             break;
                                         case "rectRounded":
-                                            var h = n / Math.SQRT2,
+                                                var h = n / Math.SQRT2,
                                                 p = -h,
                                                 g = -h,
                                                 v = Math.SQRT2 * n;
                                             this.roundedRect(t, p, g, v, v, .425 * n);
                                             break;
                                         case "rectRot":
-                                            f = 1 / Math.SQRT2 * n, t.moveTo(-f, 0), t.lineTo(0, f), t.lineTo(f, 0), t.lineTo(0, -f), t.closePath();
+                                                f = 1 / Math.SQRT2 * n,
+                                            t.moveTo(-f, 0),
+                                            t.lineTo(0, f),
+                                            t.lineTo(f, 0),
+                                            t.lineTo(0, -f),
+                                            t.closePath();
                                             break;
                                         case "cross":
-                                            t.moveTo(0, n), t.lineTo(0, -n), t.moveTo(-n, 0), t.lineTo(n, 0);
+                                                t.moveTo(0, n),
+                                            t.lineTo(0, -n),
+                                            t.moveTo(-n, 0),
+                                            t.lineTo(n, 0);
                                             break;
                                         case "crossRot":
-                                            u = Math.cos(Math.PI / 4) * n, c = Math.sin(Math.PI / 4) * n, t.moveTo(-u, -c), t.lineTo(u, c), t.moveTo(-u, c), t.lineTo(u, -c);
+                                                u = Math.cos(Math.PI / 4) * n,
+                                            c = Math.sin(Math.PI / 4) * n,
+                                            t.moveTo(-u, -c),
+                                            t.lineTo(u, c),
+                                            t.moveTo(-u, c),
+                                            t.lineTo(u, -c);
                                             break;
                                         case "star":
-                                            t.moveTo(0, n), t.lineTo(0, -n), t.moveTo(-n, 0), t.lineTo(n, 0), u = Math.cos(Math.PI / 4) * n, c = Math.sin(Math.PI / 4) * n, t.moveTo(-u, -c), t.lineTo(u, c), t.moveTo(-u, c), t.lineTo(u, -c);
+                                                t.moveTo(0, n),
+                                            t.lineTo(0, -n),
+                                            t.moveTo(-n, 0),
+                                            t.lineTo(n, 0),
+                                            u = Math.cos(Math.PI / 4) * n,
+                                            c = Math.sin(Math.PI / 4) * n,
+                                            t.moveTo(-u, -c),
+                                            t.lineTo(u, c),
+                                            t.moveTo(-u, c),
+                                            t.lineTo(u, -c);
                                             break;
                                         case "line":
-                                            t.moveTo(-n, 0), t.lineTo(n, 0);
+                                                t.moveTo(-n, 0),
+                                            t.lineTo(n, 0);
                                             break;
                                         case "dash":
-                                            t.moveTo(0, 0), t.lineTo(n, 0)
+                                                t.moveTo(0, 0),
+                                            t.lineTo(n, 0)
                                     }
                                     t.fill(), t.stroke(), t.restore()
                                 }
@@ -8292,7 +8337,8 @@
                                             height: c
                                         }
                                     })), w += S, x.push(S), g.width += w
-                                } t.width = g.width, t.height = g.height
+                                }
+                            t.width = g.width, t.height = g.height
                         },
                         afterFit: s,
                         isHorizontal: function() {
@@ -10017,7 +10063,8 @@
                                                     var F = w.setPropertyValue(S, M, P.currentValue + (0 === parseFloat(A) ? "" : P.unitType), P.rootPropertyValue, P.scrollData);
                                                     w.Hooks.registered[M] && (a(S).rootPropertyValueCache[_] = w.Normalizations.registered[_] ? w.Normalizations.registered[_]("extract", null, F[1]) : F[1]), "transform" === F[0] && (C = !0)
                                                 }
-                                            } l.mobileHA && a(S).transformCache.translate3d === i && (a(S).transformCache.translate3d = "(0px, 0px, 0px)", C = !0), C && w.flushTransformCache(S)
+                                            }
+                                        l.mobileHA && a(S).transformCache.translate3d === i && (a(S).transformCache.translate3d = "(0px, 0px, 0px)", C = !0), C && w.flushTransformCache(S)
                                     }
                                 }
                                 l.display !== i && "none" !== l.display && (b.State.calls[r][2].display = !1), l.visibility !== i && "hidden" !== l.visibility && (b.State.calls[r][2].visibility = !1), l.progress && l.progress.call(o[1], o[1], v, Math.max(0, u + l.duration - e), u, p), 1 === v && d(r)
@@ -10058,7 +10105,7 @@
                         if (!1 !== b.State.calls[p]) {
                             l = !0;
                             break
-                        }! 1 === l && (b.State.isTicking = !1, delete b.State.calls, b.State.calls = [])
+                        }!1 === l && (b.State.isTicking = !1, delete b.State.calls, b.State.calls = [])
                 }
                 var f, h = function() {
                         if (n.documentMode) return n.documentMode;
@@ -10640,7 +10687,8 @@
                                         if ("element" !== O) {
                                             var F = _[O].startValue;
                                             _[O].startValue = _[O].currentValue = _[O].endValue, _[O].endValue = F, g.isEmptyObject(x) || (_[O].easing = s.easing), b.debug && console.log("reverse tweensContainer (" + O + "): " + JSON.stringify(_[O]), o)
-                                        } l = _
+                                        }
+                                    l = _
                                 } else if ("start" === P) {
                                     for (var D in a(o).tweensContainer && !0 === a(o).isAnimating && (_ = a(o).tweensContainer), f.each(y, (function(t, e) {
                                             if (RegExp("^" + w.Lists.colors.join("$|^") + "$").test(t)) {
@@ -10693,7 +10741,8 @@
                                                         default:
                                                             z *= 1 / r[H + "ToPx"]
                                                     }
-                                                } switch (Y) {
+                                                }
+                                            switch (Y) {
                                                 case "+":
                                                     N = z + N;
                                                     break;
@@ -11624,7 +11673,7 @@
             }, t.displayEffect = function(e) {
                 console.error("Waves.displayEffect() has been deprecated and will be removed in future version. Please use Waves.init() to initialize Waves effect"), t.init(e)
             }, t
-        })), $(document).ready((function() {
+        })), $(document).$((function() {
             Waves.attach(".btn:not(.btn-flat), .btn-floating", ["waves-light"]), Waves.attach(".btn-flat", ["waves-effect"]), Waves.attach(".chip", ["waves-effect"]), Waves.attach(".view a .mask", ["waves-light"]), Waves.attach(".waves-light", ["waves-light"]), Waves.attach(".navbar-nav a:not(.navbar-brand), .nav-icons li a, .nav-tabs .nav-item:not(.dropdown)", ["waves-light"]), Waves.attach(".pager li a", ["waves-light"]), Waves.attach(".pagination .page-item .page-link", ["waves-effect"]), Waves.init()
         }))
     }).call(this, n(89)(t))

@@ -1,5 +1,5 @@
-$(document).ready(() => {
-
+$(document).$(() => {
+    let url = "https://dentistapp-7007.herokuapp.com"
     const $tableID = $('#table')
 
     $('#add').click(function() {
@@ -11,7 +11,7 @@ $(document).ready(() => {
         let stat = {
             name: $("#name").val()
         }
-        $.post("http://localhost:2777/post-stat", stat).then(getList())
+        $.post(url + "/post-stat", stat).then(getList())
 
     })
 
@@ -27,7 +27,7 @@ $(document).ready(() => {
         $('#conf-remove').click(function() {
             $.ajax({
                 method: 'DELETE',
-                url: 'http://localhost:2777/s',
+                url: url + '/s',
                 data: {
                     id
                 },
@@ -62,7 +62,7 @@ $(document).ready(() => {
         }
     })
     let getList = () =>
-        $.get("http://localhost:2777/view-stat", data => {
+        $.get(url + "/view-stat", data => {
             $('#s-tb').html('')
             $(data).each(function(index, element) {
 

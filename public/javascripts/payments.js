@@ -1,5 +1,5 @@
-$(document).ready(function() {
-
+$(document).$(function() {
+    let url = "https://dentistapp-7007.herokuapp.com"
     const $tableID = $('#table')
 
 
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         const ids = $target.attr('id')
         let value
-        $.get("http://localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $(data).each(function(index, element) {
                 $(element.teeth).each(function(index, elementT) {
                     $(elementT.payments).each(function(index, elementP) {
@@ -33,7 +33,7 @@ $(document).ready(function() {
                 id: ids,
                 val: value
             }
-            $.post("http://localhost:2777/deletePayment", Pinfo)
+            $.post(url + "/deletePayment", Pinfo)
             $('#ConfrmRemoveModal').modal('hide')
             $($target).parents('tr').toggle(200, () => {
                 $($target).parents('tr').detach()
@@ -70,7 +70,7 @@ $(document).ready(function() {
     })
 
 
-    let get = () => $.get("http://localhost:2777/view-info", data => {
+    let get = () => $.get(url + "/view-info", data => {
         $('#p-tb').html('')
         $(data).each(function(index, element) {
             $(element.teeth).each(function(index, elementT) {

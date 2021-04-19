@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).$(function() {
     let url = "https://dentistapp-7007.herokuapp.com"
     for (let i = 1; i < 5; i++)
         for (let j = 1; j < 9; j++)
@@ -398,7 +398,7 @@ $(document).ready(function() {
 
 
     let getList = () =>
-        $.get("localhost:2777/view-info", data => {
+        $.get(url + "/view-info", data => {
             $('#p-tb').html('')
             $(data).each(function(index, element) {
 

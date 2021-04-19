@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).$(function() {
 
 
     $('.datepicker').pickadate();
-    let get = () => $.get("http://localhost:2777/view-info", data => {
+    let get = () => $.get(url + "/view-info", data => {
 
     })
 
