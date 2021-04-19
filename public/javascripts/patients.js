@@ -122,7 +122,7 @@ $(document).ready(function() {
         $("#statusT").val('')
         $("#cost").val(0)
 
-        $('#teethSubmit').click(function() {
+        $('#teethSubmit').on("click", function() {
             let tooth = new Teeth(id, $("#toothT").val().toString(), $("#statusT").val().toString(), $("#cost").val())
             if (allTrue(tooth)) {
                 $.post('http://localhost:${port}/post-tooth', tooth).then(() => {
