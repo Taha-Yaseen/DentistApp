@@ -101,6 +101,7 @@ $(document).ready(function() {
 
     })
     $tableID.on('click', '.tooth-btn', function(e) {
+        console.log('tooth btn clicked')
         e.preventDefault()
         $target = $(e.target)
 
@@ -123,9 +124,10 @@ $(document).ready(function() {
         $("#cost").val(0)
 
         $('#teethSubmit').on("click", function() {
+            console.log('tooth submit clicked')
             let tooth = new Teeth(id, $("#toothT").val().toString(), $("#statusT").val().toString(), $("#cost").val())
             if (allTrue(tooth)) {
-                $.post('http://localhost:${port}/post-tooth', tooth).then(() => {
+                $.post(url + '/post-tooth ', tooth).then(() => {
                     $('#modalTeethForm').modal('toggle')
                     $('#modalDone').modal('toggle')
                     getList()
