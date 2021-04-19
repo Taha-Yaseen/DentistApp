@@ -14,7 +14,7 @@ var mongodb = require('mongodb')
 
 var MongoClient = require('mongodb').MongoClient
 
-
+//connect
 MongoClient.connect("mongodb+srv://dentist:X8OJlYfljNhhZ0wz@dentistdb.rvaq8.mongodb.net/DentistDB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
