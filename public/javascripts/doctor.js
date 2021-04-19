@@ -1,4 +1,4 @@
-$(document).$(() => {
+$(document).ready(() => {
     let url = "https://dentistapp-7007.herokuapp.com"
     const $tableID = $('#table')
 

@@ -1,4 +1,4 @@
-$(document).$(function() {
+$(document).ready(function() {
 
 
     $('.datepicker').pickadate();
