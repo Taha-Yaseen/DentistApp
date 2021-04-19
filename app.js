@@ -1,7 +1,7 @@
 let express = require('express')
 let path = require('path')
-let env = require('dotenv').config()
-let cors = require('cors')
+
+//let cors = require('cors')
 let port = 2777
 
 let app = express()
@@ -9,9 +9,10 @@ let app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(cors)
-let mongodb = require('mongodb')
 
+//app.use(cors)
+
+let mongodb = require('mongodb')
 let MongoClient = require('mongodb').MongoClient
 
 //connect
