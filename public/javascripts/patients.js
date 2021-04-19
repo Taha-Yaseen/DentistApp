@@ -80,7 +80,7 @@ $(document).ready(function() {
         $('#conf-remove').click(function() {
             $.ajax({
                 method: 'DELETE',
-                url: 'http://localhost:2777/',
+                url: url + '/',
                 data: {
                     id
                 },
@@ -183,7 +183,7 @@ $(document).ready(function() {
             e.preventDefault()
             let payment = new Payment(tid, $("#value").val())
             if (allTrue(payment)) {
-                $.post('http://localhost:2777/post-payment', payment).then(() => {
+                $.post(url + '/post-payment', payment).then(() => {
                     $('#modalPaymentForm').modal('hide')
                     $('#modalDone').modal('toggle')
                     getList()
@@ -412,7 +412,7 @@ $(document).ready(function() {
 
 
     getList()
-    let getS = (ids, toothNumber) => $.get('http://localhost:2777/view-info', data => {
+    let getS = (ids, toothNumber) => $.get(url + '/view-info', data => {
 
 
         $("#statusP").prop('disabled', false)
@@ -433,7 +433,7 @@ $(document).ready(function() {
             }
         })
     })
-    let getV = (ids, status, number) => $.get('http://localhost:2777/view-info', data => {
+    let getV = (ids, status, number) => $.get(url + '/view-info', data => {
         $("#value").prop('disabled', false)
 
         $(data).each((index, element) => {
