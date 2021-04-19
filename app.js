@@ -298,6 +298,6 @@ MongoClient.connect("mongodb+srv://dentist:nopassword@dentistdb-rvaq8.mongodb.ne
 
 })
 
-app.listen(port, () => console.log(` App listening on port ${port}!`))
+app.listen((process.env.PORT || port), () => console.log(` App listening on port ${port}!`))
 
 module.exports = app
