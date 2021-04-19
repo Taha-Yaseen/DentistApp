@@ -234,7 +234,7 @@ $(document).ready(function() {
                 printJS({
                     printable: 'modal-body',
                     type: 'html',
-                    header: '<div style="text-align:center"><h2>Dentist Recipt</h2> <h3>Dr.Ayman</h3> <h5> Address: صيدا - وادي الزينة </h5> <h5 > Phone: 0777777 </h5></div>',
+                    header: '<div style="text-align:center"><h2>Dentist Recipt</h2> <h3>Dr.Ayman</h3> <h5> Address: Beirut </h5> <h5 > Phone: 0777777 </h5></div>',
                     style: `
                 table {
                     border-collapse: collapse;
