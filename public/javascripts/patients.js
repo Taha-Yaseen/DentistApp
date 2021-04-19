@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 
     let getStat = () =>
-        $.get(url + "/view-stat", data => {
+        $.get(process.env.URL + "/view-stat", data => {
             $('#statusT').html('')
             $(data).each(function(index, element) {
                 $('#statusT').append('<option value="' + element.name + '">' + element.name + '</option>')
